@@ -11,8 +11,6 @@ This project explores alternative approaches to improve recommendation accuracy 
 
 Even small improvements in prediction accuracy can significantly enhance user experience and business value.
 
-Source: https://www.netflixprize.com/rules.html
-
 ---
 
 ## 🎯 Problem Statement
