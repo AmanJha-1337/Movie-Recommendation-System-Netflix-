@@ -1,86 +1,43 @@
 # 🎬 Netflix Movie Recommendation System
 
-A hybrid movie recommendation system inspired by Netflix, built using collaborative filtering and machine learning techniques to predict user ratings and recommend movies.
+This repository now includes **two ways** to run recommendations:
 
----
+1. **Streamlit app (`app.py`)** → works immediately in sandbox/cloud using bundled sample data.
+2. **Original notebook (`Netflix_Movies_Recommendation.ipynb`)** → requires the large Netflix files in `Data/`.
 
-## 📌 Business Problem
-
-Netflix connects users with movies they love using its recommendation engine *Cinematch*.  
-This project explores alternative approaches to improve recommendation accuracy using machine learning.
-
-Even small improvements in prediction accuracy can significantly enhance user experience and business value.
-
----
-
-## 🎯 Problem Statement
-
-- Predict ratings for movies not yet watched by users  
-- Improve recommendation accuracy  
-- Minimize prediction error  
-
-### 📊 Evaluation Metrics
-- RMSE (Root Mean Squared Error)  
-- MAPE (Mean Absolute Percentage Error)  
-
----
-
-## 📂 Dataset Overview
-
-- 17,770 unique movies  
-- 480,189 unique users  
-- Ratings from 1 to 5  
-- Timestamped user interactions  
-
----
-
-## ⚙️ Approach
-
-### 🔹 Collaborative Filtering
-- Implemented using the Surprise library  
-- SVD and related models  
-
-### 🔹 Machine Learning
-- XGBoost used for regression-based prediction  
-
-### 🔹 Data Processing
-- Feature engineering on user-item interactions  
-- Handling sparse data  
-
----
-
-## 🚀 Features
-
-- Personalized movie recommendations  
-- Hybrid recommendation system (CF + ML)  
-- Scalable approach for large datasets  
-- Data visualization and insights  
-- Model performance comparison  
-
----
-
-## 🛠️ Tech Stack
-
-- Python 3  
-- Pandas, NumPy, SciPy  
-- Scikit-learn  
-- Surprise  
-- XGBoost  
-- Matplotlib, Seaborn  
-- Jupyter Notebook  
-
----
-
-## ▶️ Getting Started
-
-### 🔹 Prerequisites
-- Python 3  
-- Anaconda (recommended)  
-
----
-
-### 🔹 Installation
+## ✅ Fastest way (works in sandbox)
 
 ```bash
-conda install -c conda-forge xgboost
-pip install surprise
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Open: `http://localhost:8501`
+
+### What changed
+
+- Added `sample_movies.csv` so the app runs even when no external files are available.
+- App also supports uploading your own CSV (`title` required; `genres` and `description` recommended).
+- Added `.streamlit/config.toml` for cloud/container-friendly defaults.
+
+## 🚀 Deploy on Streamlit Community Cloud
+
+1. Push this repo to GitHub.
+2. In Streamlit Cloud, create app from this repository.
+3. Set:
+   - **Main file path**: `app.py`
+   - **Requirements file**: `requirements.txt`
+4. Deploy.
+
+## 📓 Notebook mode (optional)
+
+If you want the original full workflow:
+
+```bash
+mkdir -p Data
+jupyter notebook Netflix_Movies_Recommendation.ipynb
+```
+
+> The notebook expects Netflix raw files under `Data/` and may fail without them.
